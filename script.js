@@ -1,6 +1,6 @@
 // Specify the maximum number of images for each category
 const maxYes = 11; // Update this number as you add more 'yes' images
-const maxNo = 5; // Update this number as you add more 'no' images
+const maxNo = 10; // Update this number as you add more 'no' images
 
 function getRandomImageSrc(folder, max) {
     const randomNumber = Math.floor(Math.random() * max) + 1; // Random number between 1 and max
