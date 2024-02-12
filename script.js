@@ -16,11 +16,6 @@ function displayRandomGif(folder, max) {
     gifContainer.appendChild(imgElement);
 }
 
-document.getElementById('yes-button').addEventListener('click', function() {
-    displayRandomGif('yes', maxYes);
-    triggerConfetti(); // Call confetti function
-});
-
 function triggerConfetti() {
     confetti({
         particleCount: 150,
@@ -43,6 +38,23 @@ function triggerConfetti() {
         scalar: 1.2
     });
 }
+
+function triggerConfettiTest() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff1493', '#ff69b4'], // Just to simplify for testing
+    });
+}
+
+// Replace the existing confetti trigger in your yes-button event listener with this test
+document.getElementById('yes-button').addEventListener('click', function() {
+    displayRandomGif('yes', maxYes);
+    triggerConfetti(); // Call simplified test confetti function
+});
+
+
 
 
 document.getElementById('no-button').addEventListener('click', () => displayRandomGif('no', maxNo));
