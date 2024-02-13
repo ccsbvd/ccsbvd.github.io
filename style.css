@@ -69,3 +69,11 @@ body {
     max-width: 20%; /* Maximum of 20% of the screen width */
     height: auto; /* Maintain aspect ratio */
 }
+
+#message-container {
+    background-color: #86f3fc; /* Same as the page background */
+    padding: 0px; /* Adjust padding as needed */
+    border-radius: 3px; /* Optional, for rounded corners */
+    position: relative; /* This makes z-index effective */
+    z-index: 2;
+}
