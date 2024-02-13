@@ -10,49 +10,50 @@ function getRandomImageSrc(folder, max) {
 function displayRandomGif(folder, max) {
     const gifContainer = document.getElementById('gif-container');
     gifContainer.innerHTML = ''; // Clear the previous GIF
+
     const imgSrc = getRandomImageSrc(folder, max);
     const imgElement = document.createElement('img');
     imgElement.src = imgSrc;
+    imgElement.className = 'gif-image'; // Add a class name to target with CSS
     gifContainer.appendChild(imgElement);
 }
 
-function triggerConfetti() {
-    confetti({
-        particleCount: 150,
-        angle: 60,
-        spread: 55,
-        origin: { y: 0.6 },
-        colors: ['#ff1493', '#ff69b4', '#ffb6c1'], // Various shades of pink
-        shapes: ['circle', 'square'], // Standard shapes; 'canvas-confetti' does not support custom shapes like hearts
-        decay: 0.9,
-        scalar: 1.2
-    });
-    confetti({
-        particleCount: 150,
-        angle: 120,
-        spread: 55,
-        origin: { y: 0.6 },
-        colors: ['#ff1493', '#ff69b4', '#ffb6c1'], // Matching the color scheme for a cohesive look
-        shapes: ['circle', 'square'],
-        decay: 0.9,
-        scalar: 1.2
-    });
-}
 
-function triggerConfettiTest() {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#ff1493', '#ff69b4'], // Just to simplify for testing
-    });
-}
 
-// Replace the existing confetti trigger in your yes-button event listener with this test
+
+
 document.getElementById('yes-button').addEventListener('click', function() {
     displayRandomGif('yes', maxYes);
-    triggerConfetti(); // Call simplified test confetti function
+    displayRandomHearts();
 });
+
+function displayRandomHearts() {
+    // Determine how many hearts to display
+    const count = getRandomInt(10, 30);
+    
+    for (let i = 0; i < count; i++) {
+        const heart = document.createElement('img');
+        heart.src = `images/heart${getRandomInt(1, 6)}.png`; // Assuming you have 3 heart images
+        heart.className = 'heart';
+        
+        // Random position within the viewport
+        heart.style.left = `${getRandomInt(0, window.innerWidth - 30)}px`;
+        heart.style.top = `${getRandomInt(0, window.innerHeight - 30)}px`;
+        
+        document.body.appendChild(heart);
+        
+        // Optional: Remove hearts after a certain time
+        setTimeout(() => {
+            document.body.removeChild(heart);
+        }, 3000); // Adjust time as needed
+    }
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
 
 
 

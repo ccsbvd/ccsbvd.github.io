@@ -1,11 +1,21 @@
 body {
-    background-color: white;
+    background-color: #86f3fc;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Adjust if necessary to align items at the start */
     height: 100vh;
+    margin: 0;
+    overflow: auto; /* Allows body to be taller than the viewport */
 }
+
+#gif-container {
+    width: 100%; /* Ensure it takes full width for proper centering of GIFs */
+    display: flex;
+    justify-content: center; /* Center GIFs horizontally */
+    flex-wrap: wrap; /* Wrap GIFs if multiple */
+}
+
 
 .oval-button {
     padding: 10px 20px;
@@ -19,19 +29,26 @@ body {
 
 #yes-button {
     background-color: #416dbf;
+    position: relative; 
+    z-index: 3;
 }
 
 #no-button {
     background-color: #940101;
+    position: relative; 
+    z-index: 4;
 }
 
 #gif-container {
     margin-bottom: 20px;
-    height: 200px; /* Adjust based on your GIF size */
+    height: 400px; /* Adjust based on your GIF size */
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative; /* This makes z-index effective */
+    z-index: 2; /* Higher z-index */
 }
+
 
 #valentine-message {
     color: #ff1493; /* Deep pink; adjust as needed for your theme */
@@ -39,4 +56,16 @@ body {
     font-size: 32px; /* Adjust size as needed */
     text-align: center;
     margin-bottom: 20px; /* Space between the message and the buttons */
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1; /* Lower z-index */
+}
+
+.gif-image {
+    max-width: 20%; /* Maximum of 20% of the screen width */
+    height: auto; /* Maintain aspect ratio */
 }
