@@ -66,7 +66,7 @@ body {
 }
 
 .gif-image {
-    max-width: 20%; /* Maximum of 20% of the screen width */
+    max-width: 50%; /* Maximum of 20% of the screen width */
     height: auto; /* Maintain aspect ratio */
 }
 
